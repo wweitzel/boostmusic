@@ -19,15 +19,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('spotify_access_token')) {
-      this.spotifyLoggedIn = true;
-    }
-    if (sessionStorage.getItem('strava_access_token')) {
-      this.stravaLoggedIn = true;
-    }
-    if (this.spotifyLoggedIn && this.stravaLoggedIn) {
-      this.router.navigate(['home']);
-    }
+    this.checkLogin();
     const spotifyAccessToken = this.route.snapshot.queryParamMap.get('access_token');
     const spotifyRefreshtoken = this.route.snapshot.queryParamMap.get('refresh_token');
     if (spotifyAccessToken && spotifyRefreshtoken) {
@@ -40,6 +32,7 @@ export class LoginComponent implements OnInit {
         resp => {
           sessionStorage.setItem('strava_access_token', resp.access_token);
           sessionStorage.setItem('strava_refresh_token', resp.refresh_token);
+          this.checkLogin();
         }
       );
     }
@@ -51,5 +44,17 @@ export class LoginComponent implements OnInit {
 
   loginWithStrava(): void {
     this.authService.loginWithStrava();
+  }
+
+  checkLogin(): void {
+    if (sessionStorage.getItem('spotify_access_token')) {
+      this.spotifyLoggedIn = true;
+    }
+    if (sessionStorage.getItem('strava_access_token')) {
+      this.stravaLoggedIn = true;
+    }
+    if (this.spotifyLoggedIn && this.stravaLoggedIn) {
+      this.router.navigate(['home']);
+    }
   }
 }

@@ -8,19 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  accessToken: string;
-  refreshToken: string;
-
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    sessionStorage.setItem('spotify_access_token', this.accessToken);
-    sessionStorage.setItem('spotify_refresh_token', this.refreshToken);
   }
 
   getUserInfo(): void {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', 'Bearer ' + this.accessToken);
+    headers = headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('spotify_access_token'));
     this.http.get('https://api.spotify.com/v1/me', {
       headers
     }).subscribe(

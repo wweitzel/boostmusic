@@ -1,3 +1,4 @@
+const api_keys = require('./api_keys');
 const express = require('express');
 const cors = require('cors');
 const request = require('request');
@@ -10,7 +11,7 @@ const SpotifyWebApi = require('spotify-web-api-node');
 stravaApi.config({
   "access_token": "Your apps access token (Required for Quickstart)",
   "client_id": "61624",
-  "client_secret": "",
+  "client_secret": api_keys.stravaSecret,
   "redirect_uri": "developers.strava.com",
 });
 
@@ -18,7 +19,7 @@ stravaAccessToken = ''
 strava = new stravaApi.client(stravaAccessToken);
 
 var client_id = 'aa10d90cefbb4c03951f30435057a23f'; // Your client id
-var client_secret = ''; // Your secret
+var client_secret = api_keys.spotifySecret; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
 var generateRandomString = function (length) {
@@ -119,7 +120,7 @@ app.get('/refresh_token', async (req, res) => {
 
 app.get('/exchange_strava_token', async (req, res) => {
   const clientId = '61624';
-  const clientSecret = '';
+  const clientSecret = api_keys.stravaSecret;
   const authCode = req.query.code
 
   const url = `https://www.strava.com/oauth/token?` +
