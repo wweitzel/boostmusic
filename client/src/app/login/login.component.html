@@ -1,0 +1,8 @@
+<h3>Login Status:</h3>
+<div>Spotify {{spotifyLoggedIn ? 'Logged in' : 'Logged out'}}</div>
+<div>Strava {{stravaLoggedIn ? 'Logged in' : 'Logged out'}}</div>
+
+<br>
+
+<button (click)="loginWithSpotify()">Login with Spotify</button>
+<button (click)="loginWithStrava()">Login with Strava</button>
