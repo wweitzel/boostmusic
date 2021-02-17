@@ -2,3 +2,23 @@
 
 <button (click)="getUserInfo()">Get user info</button>
 <button (click)="findStravaPrs()">Find strava prs</button>
+<button (click)="getRecentlyPlayedTracks()">Get recently played tracks</button>
+<button (click)="getMostRecentActivity()">Get most recent activity</button>
+
+<br>
+<hr>
+<div *ngFor="let songEffort of effortSongs">
+    <strong>Segment Name: </strong>{{songEffort.effort_name}}
+    <div>PR Rank {{songEffort.effort.pr_rank ? songEffort.effort.pr_rank : 'faster average'}}</div>
+    <!-- <div>Segment Start time: {{songEffort.effort_start_time}}</div> -->
+    <!-- <div>Segment End time: {{songEffort.effort_end_time}}</div> -->
+    <strong>Songs Listened To: </strong>
+    <ul>
+        <li *ngFor="let song of songEffort.songs">
+            <div>{{song.track.name}}</div>
+            <!-- <div>Song Start time: {{makeDate(song.played_at)}}</div> -->
+            <!-- <div>Song End time: {{calcSongEndTime(song)}}</div> -->
+        </li>
+    </ul>
+    <hr>
+</div>

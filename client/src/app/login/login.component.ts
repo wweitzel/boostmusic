@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     const spotifyAccessToken = this.route.snapshot.queryParamMap.get('access_token');
     const spotifyRefreshtoken = this.route.snapshot.queryParamMap.get('refresh_token');
     if (spotifyAccessToken && spotifyRefreshtoken) {
-      sessionStorage.setItem('spotify_access_token', spotifyRefreshtoken);
+      sessionStorage.setItem('spotify_access_token', spotifyAccessToken);
       sessionStorage.setItem('spotify_refresh_token', spotifyRefreshtoken);
     }
     const stravaAuthCode = this.route.snapshot.queryParamMap.get('code');
@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit {
           this.checkLogin();
         }
       );
+    } else {
+      this.checkLogin();
     }
   }
 
