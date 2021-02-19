@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   stravaClientId = '61624';
-  stravaTokenExhangeUrl = 'http://localhost:8888/exchange_strava_token';
+  stravaTokenExhangeUrl = 'http://localhost:8888/exchange-token/strava';
 
   constructor(private http: HttpClient) { }
 
   loginWithSpotify(): void {
-    window.open('http://localhost:8888/login', '_self');
+    window.open('http://localhost:8888/login/spotify', '_self');
   }
 
   loginWithStrava(): void {

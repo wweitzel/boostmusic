@@ -65,7 +65,9 @@ export class HomeComponent implements OnInit {
               }
             }
             console.log('song before segment', songBeforeSegment);
-            filteredSongs.push(songBeforeSegment);
+            if (songBeforeSegment) {
+              filteredSongs.push(songBeforeSegment);
+            }
           }
           effortSongs.push({
             effort_name: effort.name,
