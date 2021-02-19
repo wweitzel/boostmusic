@@ -1,8 +1,12 @@
-<h3>Login Status:</h3>
-<div>Spotify {{spotifyLoggedIn ? 'Logged in' : 'Logged out'}}</div>
-<div>Strava {{stravaLoggedIn ? 'Logged in' : 'Logged out'}}</div>
+<h3>Please link your accounts</h3>
 
 <br>
 
-<button (click)="loginWithSpotify()">Login with Spotify</button>
-<button (click)="loginWithStrava()">Login with Strava</button>
+<div>Link spotify account: {{spotifyLoggedIn ? 'Linked successfully': 'Not linked'}}</div>
+<button [disabled]="spotifyLoggedIn" (click)="loginWithSpotify()">Link Spotify Account</button>
+
+<br>
+<br>
+
+<div>Link strava account: {{stravaLoggedIn ? 'Linked successfully': 'Not linked'}}</div>
+<button [disabled]="stravaLoggedIn" (click)="loginWithStrava()">Link Strava Account</button>

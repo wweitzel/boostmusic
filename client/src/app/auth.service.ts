@@ -31,4 +31,14 @@ export class AuthService {
     return this.http.get<any>(url);
   }
 
+  accountsLinked(): boolean {
+    const spotifyAccessToken = sessionStorage.getItem('spotify_access_token');
+    const stravaAccessToken = sessionStorage.getItem('strava_access_token');
+    if (spotifyAccessToken && stravaAccessToken) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
